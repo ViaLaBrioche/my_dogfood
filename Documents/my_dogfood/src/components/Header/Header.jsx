@@ -6,15 +6,19 @@ import { Search } from '../Header/Search/search.jsx'
 import React from 'react'
 import './header.css';
 
-export const Header = () => {
-    return <header className="header__container">
-        <LogoDogo className="header__logo"/>
-        <Search/>
-        <div className="header__icons">
-            <IconHeart/>
-            <IconBasket/>
-            <IconDog/>
-        </div>
+export const Header = ({setSearchTerm}) => {
 
-    </header>
+    return <header>
+                <div className="main__container">
+                    <div className="header__container">
+                        <LogoDogo className="header__logo"/>
+                        <Search setSearchTerm={setSearchTerm}/>
+                        <div className="header__icons">
+                        <IconHeart/>
+                        <IconBasket/>
+                        <IconDog/>
+                        </div>
+                    </div>
+                </div>
+            </header>
 }

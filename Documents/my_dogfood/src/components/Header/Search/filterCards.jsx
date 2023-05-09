@@ -1,3 +1,3 @@
-export const Filter = (CardList) => {
-    return CardList.filter(card => card.price < 300)
+export const Filter = (text, cards) => {
+    return cards.filter()
 }
