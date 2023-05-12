@@ -7,11 +7,20 @@ import './components/CardList/main.css'
 import { CardList } from "./components/CardList/CardList"
 import { Footer }  from './components/Footer/Footer'
 import { SearchResult } from './components/SearchResult/SearchResult';
-import data from './components/data/data.json'
+import { Api } from './components/Api/api';
 
 
 function App() {
+  
 
+  const MyData = (res) => {
+    return setCards(res.products.filter(item => 
+      item.author['_id'] == '645871a2e0bf2c519b9ccfbe'))
+  }
+  
+
+
+  
   const  filterCards = (searchText, cards) => {
   if (!searchText) {
     return cards;
@@ -19,21 +28,35 @@ function App() {
     return cards.filter(({name}) => 
       name.toLowerCase().includes(searchText.toLowerCase())
   );
-}
-
-  const [cards, setCards] = useState(data)
+} 
+  let data = []
+  const config = {
+    baseUrl: 'https://api.react-learning.ru/'
+  };
+  const api = new Api(config);
+  const [cards, setCards] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
-  
+
   useEffect(() => {
     const Debounce = setTimeout(() => {
-      const filtredCards = filterCards(searchTerm, data);
+      const filtredCards = filterCards(searchTerm, cards);
       setCards(filtredCards)
-      console.log(filtredCards.length)
     }, 300);
       return () => clearTimeout(Debounce)
   }, [searchTerm]);
 
-const searchResult = cards.length
+  const searchResult = cards.length
+
+  api.getAllItems()
+
+    .then(res => {
+      return MyData(res)
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+
+
 
   return (
     <div className="App">
