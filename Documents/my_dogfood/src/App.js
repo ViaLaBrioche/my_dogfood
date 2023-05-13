@@ -7,7 +7,7 @@ import './components/CardList/main.css'
 import { CardList } from "./components/CardList/CardList"
 import { Footer }  from './components/Footer/Footer'
 import { SearchResult } from './components/SearchResult/SearchResult';
-import { Api } from './components/Api/api';
+import { Api } from './components/Api/Api';
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
 
   const MyData = (res) => {
     return setCards(res.products.filter(item => 
-      item.author['_id'] == '645871a2e0bf2c519b9ccfbe'))
+      item.author['_id'] === '645871a2e0bf2c519b9ccfbe'))
   }
   
 
@@ -29,13 +29,13 @@ function App() {
       name.toLowerCase().includes(searchText.toLowerCase())
   );
 } 
-  let data = []
   const config = {
     baseUrl: 'https://api.react-learning.ru/'
   };
   const api = new Api(config);
   const [cards, setCards] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
+  
 
   useEffect(() => {
     const Debounce = setTimeout(() => {
