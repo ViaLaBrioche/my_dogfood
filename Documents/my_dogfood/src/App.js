@@ -35,7 +35,7 @@ function App() {
   const api = new Api(config);
   const [cards, setCards] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
-  
+  const searchResult = cards.length
 
   useEffect(() => {
     const Debounce = setTimeout(() => {
@@ -45,8 +45,9 @@ function App() {
       return () => clearTimeout(Debounce)
   }, [searchTerm]);
 
-  const searchResult = cards.length
+  
 
+  
   api.getAllItems()
 
     .then(res => {
