@@ -47,7 +47,7 @@ function App() {
 
   
 
-  
+  useEffect(() => {
   api.getAllItems()
 
     .then(res => {
@@ -56,7 +56,7 @@ function App() {
     .catch((error) => {
         console.log(error);
     });
-
+ }, []);
 
 
   return (
