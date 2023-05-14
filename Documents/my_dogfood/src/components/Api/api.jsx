@@ -13,7 +13,6 @@ export class Api {
             .then(res => {
             console.log(res)
             return res.ok ? res.json() : Promise.reject('У меня лапки')
-            })
-        
+            })     
     };
 }

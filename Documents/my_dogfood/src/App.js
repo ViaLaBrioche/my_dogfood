@@ -27,15 +27,29 @@ function App() {
   }
     return cards.filter(({name}) => 
       name.toLowerCase().includes(searchText.toLowerCase())
-  );
+  )
 } 
   const config = {
     baseUrl: 'https://api.react-learning.ru/'
   };
   const api = new Api(config);
   const [cards, setCards] = useState([])
-  const [searchTerm, setSearchTerm] = useState('')
+  const [searchTerm, setSearchTerm] = useState()
   const searchResult = cards.length
+
+
+
+useEffect (()=> {
+  api.getAllItems()
+
+  .then(res => {
+    return MyData(res)
+  })
+  .catch((error) => {
+      console.log(error);
+  });
+},[])
+  
 
   useEffect(() => {
     const Debounce = setTimeout(() => {
@@ -46,16 +60,6 @@ function App() {
   }, [searchTerm]);
 
   
-
-  
-  api.getAllItems()
-
-    .then(res => {
-      return MyData(res)
-    })
-    .catch((error) => {
-        console.log(error);
-    });
 
 
 
