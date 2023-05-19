@@ -32,23 +32,22 @@ function App() {
 
   useEffect(() => {
     const Debounce = setTimeout(() => {
-      const filtredCards = filterCards(searchTerm, cards);
-      setCards(filtredCards)
-    }, 300);
-      return () => clearTimeout(Debounce)
-  }, [searchTerm]);
 
-  useEffect(() => {
   api.getAllItems()
-
     .then(res => {
     return setCards(filterCards(searchTerm, res.products.filter(item => 
       item.author['_id'] === '645871a2e0bf2c519b9ccfbe')))
-  })
-  .catch((error) => {
-      console.log(error)
-  });
+    })
+    .catch((error) => {
+        console.log(error)
+    });
+    }, 300);
+
+  return () => clearTimeout(Debounce)
+
 },[searchTerm]);
+
+
 
 
   return (
