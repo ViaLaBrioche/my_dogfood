@@ -11,16 +11,7 @@ import { Api } from './components/Api/Api';
 
 
 function App() {
-  
 
-  const MyData = (res) => {
-    return setCards(res.products.filter(item => 
-      item.author['_id'] === '645871a2e0bf2c519b9ccfbe'))
-  }
-  
-
-
-  
   const  filterCards = (searchText, cards) => {
   if (!searchText) {
     return cards;
@@ -51,12 +42,13 @@ function App() {
   api.getAllItems()
 
     .then(res => {
-      return MyData(res)
-    })
-    .catch((error) => {
-        console.log(error);
-    });
- }, []);
+    return setCards(filterCards(searchTerm, res.products.filter(item => 
+      item.author['_id'] === '645871a2e0bf2c519b9ccfbe')))
+  })
+  .catch((error) => {
+      console.log(error)
+  });
+},[searchTerm]);
 
 
   return (
