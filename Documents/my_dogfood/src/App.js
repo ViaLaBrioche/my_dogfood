@@ -11,14 +11,15 @@ import { Api } from './components/Api/Api';
 
 
 function App() {
-  
 
-  const MyData = (res) => {
-    return setCards(res.products.filter(item => 
-      item.author['_id'] === '645871a2e0bf2c519b9ccfbe'))
-  }
   
+  const config = {
+    baseUrl: 'https://api.react-learning.ru/'
+  };
 
+  const api = new Api(config);
+  const [cards, setCards] = useState([])
+  const [searchTerm, setSearchTerm] = useState()
 
   
   const  filterCards = (searchText, cards) => {
@@ -28,14 +29,7 @@ function App() {
     return cards.filter(({name}) => 
       name.toLowerCase().includes(searchText.toLowerCase())
   )
-} 
-  const config = {
-    baseUrl: 'https://api.react-learning.ru/'
-  };
-  const api = new Api(config);
-  const [cards, setCards] = useState([])
-  const [searchTerm, setSearchTerm] = useState()
-  const searchResult = cards.length
+};
 
 
 
@@ -43,12 +37,13 @@ useEffect (()=> {
   api.getAllItems()
 
   .then(res => {
-    return MyData(res)
+    return setCards(filterCards(searchTerm, res.products.filter(item => 
+      item.author['_id'] === '645871a2e0bf2c519b9ccfbe')))
   })
   .catch((error) => {
-      console.log(error);
+      console.log(error)
   });
-},[])
+},[searchTerm]);
   
 
   useEffect(() => {
@@ -67,7 +62,7 @@ useEffect (()=> {
     <div className="App">
       <Header setSearchTerm={setSearchTerm}/>
     <div className='main__container'>
-        <SearchResult searchResult={searchResult}/>
+        <SearchResult />
         <SortMenu/>
         <CardList cards={cards}/>
     </div>
