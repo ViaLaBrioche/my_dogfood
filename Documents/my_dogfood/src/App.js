@@ -11,7 +11,6 @@ import { Api } from './components/Api/Api';
 
 
 function App() {
-
   
   const config = {
     baseUrl: 'https://api.react-learning.ru/'
@@ -21,7 +20,6 @@ function App() {
   const [cards, setCards] = useState([])
   const [searchTerm, setSearchTerm] = useState()
 
-  
   const  filterCards = (searchText, cards) => {
   if (!searchText) {
     return cards;
@@ -32,20 +30,6 @@ function App() {
 };
 
 
-
-useEffect (()=> {
-  api.getAllItems()
-
-  .then(res => {
-    return setCards(filterCards(searchTerm, res.products.filter(item => 
-      item.author['_id'] === '645871a2e0bf2c519b9ccfbe')))
-  })
-  .catch((error) => {
-      console.log(error)
-  });
-},[searchTerm]);
-  
-
   useEffect(() => {
     const Debounce = setTimeout(() => {
       const filtredCards = filterCards(searchTerm, cards);
@@ -54,8 +38,17 @@ useEffect (()=> {
       return () => clearTimeout(Debounce)
   }, [searchTerm]);
 
-  
+  useEffect(() => {
+  api.getAllItems()
 
+    .then(res => {
+    return setCards(filterCards(searchTerm, res.products.filter(item => 
+      item.author['_id'] === '645871a2e0bf2c519b9ccfbe')))
+  })
+  .catch((error) => {
+      console.log(error)
+  });
+},[searchTerm]);
 
 
   return (
