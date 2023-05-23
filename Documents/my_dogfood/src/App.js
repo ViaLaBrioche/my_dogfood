@@ -2,13 +2,15 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { Header } from './components/Header/Header';
-import { SortMenu } from "./components/SortMenu/SortMenu"
 import './components/CardList/main.css'
-import { CardList } from "./components/CardList/CardList"
 import { Footer }  from './components/Footer/Footer'
-import { SearchResult } from './components/SearchResult/SearchResult';
 import { Api } from './components/Api/Api';
-
+import { Route, Routes } from 'react-router-dom';
+import { CatalogPage } from './pages/CatalogPage/CatalogPage'
+import { ProductPage } from './pages/ProductPage/ProductPage'
+import { SearchResultPage } from './pages/SearchResultPage/SearchResultPage'
+import { NotFound } from './pages/NotFoundPage/NotFound'
+import './pages/NotFoundPage/notFound.css'
 
 function App() {
   
@@ -16,9 +18,12 @@ function App() {
     baseUrl: 'https://api.react-learning.ru/'
   };
 
+  
+
   const api = new Api(config);
   const [cards, setCards] = useState([])
   const [searchTerm, setSearchTerm] = useState()
+
 
   const  filterCards = (searchText, cards) => {
   if (!searchText) {
@@ -47,16 +52,16 @@ function App() {
 
 },[searchTerm]);
 
-
-
-
   return (
     <div className="App">
       <Header setSearchTerm={setSearchTerm}/>
     <div className='main__container'>
-        <SearchResult />
-        <SortMenu/>
-        <CardList cards={cards}/>
+        <Routes>
+          <Route path="/" element={<CatalogPage cards={cards}/>} />
+          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/product/search" element={<SearchResultPage cards={cards}/>} />
+          <Route path="*" element={<NotFound/>}/>
+        </Routes>
     </div>
     <Footer/>
     </div>

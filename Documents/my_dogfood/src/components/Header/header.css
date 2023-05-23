@@ -38,7 +38,7 @@ header .main__container .header__container {
     position: absolute;
     margin-left: -48px;
     margin-top: 15px;
-    background-color: white;
+    background-color: rgb(255, 255, 255, 0);
     border: none;
 }
 
@@ -51,8 +51,16 @@ header .main__container .header__container {
     outline: none;
 }
 
+.search__input::-ms-clear {
+    display: none;
+}
+
+
 .main__container {
     display: flex;
     flex-direction: column;
     margin: 0px 223px;
+}
+.search__input::-ms-clear {
+    display: none;
 }
