@@ -8,7 +8,6 @@ import { Api } from './components/Api/Api';
 import { Route, Routes } from 'react-router-dom';
 import { CatalogPage } from './pages/CatalogPage/CatalogPage'
 import { ProductPage } from './pages/ProductPage/ProductPage'
-import { SearchResultPage } from './pages/SearchResultPage/SearchResultPage'
 import { NotFound } from './pages/NotFoundPage/NotFound'
 import './pages/NotFoundPage/notFound.css'
 
@@ -22,8 +21,10 @@ function App() {
 
   const api = new Api(config);
   const [cards, setCards] = useState([])
-  const [searchTerm, setSearchTerm] = useState()
+  const [searchTerm, setSearchTerm] = useState('')
 
+
+  console.log(searchTerm, 'this')
 
   const  filterCards = (searchText, cards) => {
   if (!searchText) {
@@ -57,9 +58,8 @@ function App() {
       <Header setSearchTerm={setSearchTerm}/>
     <div className='main__container'>
         <Routes>
-          <Route path="/" element={<CatalogPage cards={cards}/>} />
+          <Route path="/" element={<CatalogPage cards={cards} searchTerm={searchTerm}/>} />
           <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="/product/search" element={<SearchResultPage cards={cards}/>} />
           <Route path="*" element={<NotFound/>}/>
         </Routes>
     </div>
