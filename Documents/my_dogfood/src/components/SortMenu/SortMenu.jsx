@@ -7,10 +7,10 @@ export const SortMenu = ({cards, setCards}) => {
             return 0;
         }
         const res = reviews.reduce((acc, el) => acc += el.rating, 0);
-        console.log(res / reviews.length);
         return res / reviews.length
     }
 
+    
     const SortExpensive = (cards) => {
         const newCards = cards.sort((a, b) => b.price - a.price);
         setCards([...newCards]);

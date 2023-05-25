@@ -77,3 +77,23 @@ border-radius: 12px;
     color: #1A1A1A;
     font-weight: 400;
 }
+
+.card__container__sticky {
+    position: relative;
+}
+
+.card__discount {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #F44336;
+    width: 3em;
+    height: 2em;
+    border-radius: 20px;
+    padding: 2px, 8px, 2px, 8px;
+    color:#ffff;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

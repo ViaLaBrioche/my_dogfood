@@ -51,9 +51,6 @@ function App() {
 
 },[searchTerm]);
 
-useEffect(() => {
-  
-}, [cards])
 
   return (
     <div className="App">
