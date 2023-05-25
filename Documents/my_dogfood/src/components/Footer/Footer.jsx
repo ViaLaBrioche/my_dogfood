@@ -18,21 +18,21 @@ export const Footer = () => {
                     <span className="logo__info">© «Интернет-магазин DogFood.ru»</span>
                 </div>
                 <div className="footer__links">
-                    <a>Каталог</a>
-                    <a>Акции</a>
-                    <a>Новости</a>
-                    <a>Отзывы</a>
+                    <span>Каталог</span>
+                    <span>Акции</span>
+                    <span>Новости</span>
+                    <span>Отзывы</span>
                 </div>
                 <div className="footer__links">
-                    <a>Оплата и доставка</a>
-                    <a>Часто спрашивают</a>
-                    <a>Обратная связь</a>
-                    <a>Контакты</a>
+                    <span>Оплата и доставка</span>
+                    <span>Часто спрашивают</span>
+                    <span>Обратная связь</span>
+                    <span>Контакты</span>
                 </div>
                 <div className="footer__links">
                     <span className="link__phone">Мы на связи</span>
-                    <a className="link__phone">8 (999) 00-00-00</a>
-                    <a className="link__email">dogfood.ru@gmail.com</a>
+                    <span className="link__phone">8 (999) 00-00-00</span>
+                    <span className="link__email">dogfood.ru@gmail.com</span>
                     <div className="footer__icons">
                         <LogoPhone/>
                         <LogoTelegram/>
