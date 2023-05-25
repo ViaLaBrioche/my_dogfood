@@ -24,8 +24,6 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('')
 
 
-  console.log(searchTerm, 'this')
-
   const  filterCards = (searchText, cards) => {
   if (!searchText) {
     return cards;
@@ -53,12 +51,16 @@ function App() {
 
 },[searchTerm]);
 
+useEffect(() => {
+  
+}, [cards])
+
   return (
     <div className="App">
       <Header setSearchTerm={setSearchTerm}/>
     <div className='main__container'>
         <Routes>
-          <Route path="/" element={<CatalogPage cards={cards} searchTerm={searchTerm}/>} />
+          <Route path="/" element={<CatalogPage setCards={setCards} cards={cards} searchTerm={searchTerm}/>} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="*" element={<NotFound/>}/>
         </Routes>
