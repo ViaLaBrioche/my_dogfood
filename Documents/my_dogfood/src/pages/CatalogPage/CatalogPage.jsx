@@ -6,7 +6,7 @@ import { SortMenu } from "../../components/SortMenu/SortMenu";
 export const CatalogPage = ( {searchTerm, cards, setCards}) => {
     
     return <div><SortMenu setCards={setCards} cards={cards}/>
-    <div>{searchTerm == 0 ? null : <SearchResult searchTerm={searchTerm} cards={cards} />}</div>
+    <div>{!!searchTerm && <SearchResult searchTerm={searchTerm} cards={cards} />}</div>
     <CardList cards={cards}/>
     </div>
 }

@@ -5,6 +5,7 @@ import { ReactComponent as IconBasket } from './Icons/basket.svg'
 import { Search } from '../Header/Search/Search.jsx'
 import React from 'react'
 import './header.css';
+import { Link } from 'react-router-dom';
 
 export const Header = ({setSearchTerm}, {setSearch}) => {
 
@@ -14,7 +15,7 @@ export const Header = ({setSearchTerm}, {setSearch}) => {
                         <LogoDogo className="header__logo"/>
                         <Search setSearchTerm={setSearchTerm} setSearch={setSearch}/>
                         <div className="header__icons">
-                        <IconHeart/>
+                        <Link to="/favorite"><IconHeart/></Link>
                         <IconBasket/>
                         <IconDog/>
                         </div>

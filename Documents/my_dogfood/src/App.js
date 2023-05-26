@@ -10,6 +10,7 @@ import { CatalogPage } from './pages/CatalogPage/CatalogPage'
 import { ProductPage } from './pages/ProductPage/ProductPage'
 import { NotFound } from './pages/NotFoundPage/NotFound'
 import './pages/NotFoundPage/notFound.css'
+import { FavoriteProductPage } from './pages/FavoriteProductPage/FavoriteProductPage';
 
 function App() {
   
@@ -59,6 +60,7 @@ function App() {
         <Routes>
           <Route path="/my_dogfood" element={<CatalogPage setCards={setCards} cards={cards} searchTerm={searchTerm}/>} />
           <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/favorite" element={<FavoriteProductPage/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Routes>
     </div>

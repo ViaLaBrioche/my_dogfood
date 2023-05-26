@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from 'react-router-dom';
+import { ReactComponent as IconHeart } from './Icons/heart.svg'
 
 export const Card = ({name, price,wight,pictures,_id, discount}) => {
     function Price(discount) {
@@ -13,13 +14,14 @@ export const Card = ({name, price,wight,pictures,_id, discount}) => {
 }
     return (
         <div className="card" >
-            <Link className="card__link" to={`/product/${_id}`}>
-                <div className="card__container__sticky">
-                    <img src={pictures} alt="description of image" className='card__image'></img>
-                    {!!discount && <div className="card__discount"> 
+            <div className="card__container__sticky">
+            {!!discount && <div className="card__discount"> 
                         <span className='card__discount'>-{discount}%</span>
                     </div>}
-                </div>
+                    <button className="card__favorite__btn"><IconHeart className="card__favorite_heart"/></button>
+            </div>
+            <Link className="card__link" to={`/product/${_id}`}>
+                    <img src={pictures} alt="description of image" className='card__image'></img>
                 <Price discount={discount}/>
                 <div className="item__info">
                     <span className="item__wight">{wight}</span>

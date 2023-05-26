@@ -10,7 +10,7 @@ export const NotFound = () => {
           <p class="p-b">
               ...Вернуться на главную страницу
           </p>
-          <a href='/catalog' class="back">Вернуться на главную</a>
+          <a href='/my_dogfood' class="back">Вернуться на главную</a>
       </div>
   </div>
 }
