@@ -11,7 +11,7 @@ export const Product = ({product}) => {
     const [counter, setCounter] = useState(0);
 
     return <div>
-        <Link to="/"><button className="product__btn__back" type="button">Назад</button></Link>
+        <Link to="/my_dogfood"><button className="product__btn__back" type="button">Назад</button></Link>
     <div className='product__container_name_rate'>
         <h1>{product.name}</h1>
         <span className="product__articul">Арстикул: 12345</span>

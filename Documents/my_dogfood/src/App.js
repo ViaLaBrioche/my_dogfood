@@ -57,7 +57,7 @@ function App() {
       <Header setSearchTerm={setSearchTerm}/>
     <div className='main__container'>
         <Routes>
-          <Route path="/" element={<CatalogPage setCards={setCards} cards={cards} searchTerm={searchTerm}/>} />
+          <Route path="/my_dogfood" element={<CatalogPage setCards={setCards} cards={cards} searchTerm={searchTerm}/>} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="*" element={<NotFound/>}/>
         </Routes>

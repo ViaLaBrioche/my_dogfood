@@ -53,6 +53,19 @@ border-radius: 12px;
     color: #1A1A1A;
 }
 
+.item__price__discount {
+    color: #1A1A1A;
+    font-family: Nunito;
+    font-size: 12px;
+    line-height: 2em;
+    text-decoration: line-through solid !important
+
+}
+
+.item__price_red {
+    color: #F44336;
+}
+
 .item__info {
     display: flex;
     flex-direction: column;
