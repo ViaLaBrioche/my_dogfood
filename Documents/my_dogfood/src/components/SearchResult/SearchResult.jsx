@@ -16,7 +16,8 @@ export const SearchResult = ({cards, searchTerm}) => {
         if (cards.length == 1) {
             return "найден"
         } else {
-            return "найдено"        }
+            return "найдено"      
+        }
     };
 
     return <p className="main_result">По запросу  <b>{searchTerm}</b> {FoundProduct()} {cards.length} {CountProduct()} </p>

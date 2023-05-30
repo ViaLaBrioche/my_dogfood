@@ -7,8 +7,22 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 
-export const Product = ({product}) => {
+export const Product = ({product, addLike, deleteLike}) => {
+
     const [counter, setCounter] = useState(0);
+
+    const addAlert = () => {
+        if (counter === 0 ) {
+        alert('Товар успешно добавлен в корзину')
+    }}
+
+
+    const productAddAlert = () => {
+        setCounter(counter + 1)
+        addAlert();
+        return
+    }
+
 
     return <div>
         <Link to="/my_dogfood"><button className="product__btn__back" type="button">Назад</button></Link>
@@ -21,18 +35,19 @@ export const Product = ({product}) => {
             <img className="product__image" src={product.pictures}/>
             <img className="product__image_small" src={product.pictures}/>
             <div className="product__container__active">
-                <div className="product__price"><b>{product.price}&nbsp;₽</b></div>
+                <div className="product__price"><b>{counter > 0 ? product.price*counter : product.price}&nbsp;₽</b></div>
                 <div className="product__container__btns">
                 <div id="counter">
                     <input type="button"  className="button__count__minus counter__btns" value="-" onClick={() => setCounter(counter > 0 ? counter - 1 : 0)}/>
                     <div id="buttonCountNumber"><b>{counter}</b></div>
-                    <input type="button" className="button__count__plus counter__btns" value="+" onClick={() => setCounter(counter + 1)}/>
+                    <input type="button" className="button__count__plus counter__btns" value="+" onClick={() => productAddAlert()}/>
                 </div>
                     <button className="product__busket__btn">В корзину</button>
                 </div>
             <div className="product__favorite__container">
-                <IconHeart/>
-                <button className="product__favorite__btn">В избранное</button>
+                <IconHeart className="product__favorite__icon"/>
+                <button onClick={(e)=>{addLike(e.target._id)}} className="product__favorite__btn">В избранное</button>
+                <button onClick={(e)=>{deleteLike(e.target._id)}} className="product__favorite__btn">Из избранного</button>
             </div>
             <div className="product__info__container">
                 <div className="product__delivery">

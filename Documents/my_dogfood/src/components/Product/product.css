@@ -5,6 +5,10 @@
     color: #7B8E98;
 }
 
+.product__btn__back {
+    cursor: pointer;
+}
+
 .product__container_img_active {
     display: flex;
     justify-content: space-between;
@@ -13,7 +17,6 @@
 .product__image {
     height: 30%;
     width: 50%;
-
 }
 
 .product__image_small {
@@ -66,7 +69,8 @@
     border: none;
     height: 1em;
     width: 1em;
-    background-color: rgb(255, 255, 255, 0)
+    background-color: rgb(255, 255, 255, 0);
+    cursor: pointer;
 }
 
 #counter input {
@@ -85,10 +89,16 @@
     border: none;
     height: 3em;
     width: 100%;
+    cursor: pointer;
 }
 
 .product__favorite__btn {
     border: none;
     background: white;
     color: #7B8E98;
+    cursor: pointer;
+}
+
+.product__favorite__icon {
+    cursor: pointer;
 }

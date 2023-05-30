@@ -13,16 +13,15 @@ import './pages/NotFoundPage/notFound.css'
 import { FavoriteProductPage } from './pages/FavoriteProductPage/FavoriteProductPage';
 
 function App() {
-  
+
   const config = {
     baseUrl: 'https://api.react-learning.ru/'
   };
 
-  
-
   const api = new Api(config);
   const [cards, setCards] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
+  const [user, setUser] = useState({});
 
 
   const  filterCards = (searchText, cards) => {
@@ -40,8 +39,9 @@ function App() {
 
   api.getAllItems()
     .then(res => {
-    return setCards(filterCards(searchTerm, res.products.filter(item => 
+      setCards(filterCards(searchTerm, res.products.filter(item => 
       item.author['_id'] === '645871a2e0bf2c519b9ccfbe')))
+      return
     })
     .catch((error) => {
         console.log(error)
@@ -52,15 +52,25 @@ function App() {
 
 },[searchTerm]);
 
+useEffect(() => {
+  api.getUserInfo()
+    .then(res => {
+      setUser(res)
+      return 
+    })
+    .catch((error) => {
+      console.log(error)
+  });
+},[]);
 
   return (
     <div className="App">
-      <Header setSearchTerm={setSearchTerm}/>
+      <Header cards={cards} setSearchTerm={setSearchTerm}/>
     <div className='main__container'>
         <Routes>
           <Route path="/my_dogfood" element={<CatalogPage setCards={setCards} cards={cards} searchTerm={searchTerm}/>} />
           <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="/favorite" element={<FavoriteProductPage/>}/>
+          <Route path="/favorite" element={<FavoriteProductPage userId={user._id} setCards={setCards} cards={cards}/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Routes>
     </div>
